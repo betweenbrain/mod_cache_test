@@ -32,6 +32,19 @@ class ModCacheTestHelper
 	public static function getData()
 	{
 
-		return date('i');
+		// JFactory::getCache($group,$controller,$storage)
+		// by passing '' as cache controller, you have access to the raw cache get and store.
+		$cache = JFactory::getCache('mod_cache_test', '');
+
+		$input  = JFactory::getApplication()->input;
+		$itemId = $input->get('Itemid');
+		$data   = date('i') . $itemId;
+
+		if ($data != $cache->get($itemId))
+		{
+			$cache->store($data, $itemId);
+		}
+
+		return $cache->get($itemId);
 	}
 }
