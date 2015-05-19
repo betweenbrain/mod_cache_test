@@ -38,7 +38,7 @@ class ModCacheTestHelper
 
 		$input  = JFactory::getApplication()->input;
 		$itemId = $input->get('Itemid');
-		$data   = date('i') . $itemId;
+		$data   = time();
 
 		if ($data != $cache->get($itemId))
 		{
