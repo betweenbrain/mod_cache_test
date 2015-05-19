@@ -45,6 +45,6 @@ class ModCacheTestHelper
 			$cache->store($data, $itemId);
 		}
 
-		return $cache->get($itemId);
+		return $data;
 	}
 }
